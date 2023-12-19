@@ -9,8 +9,8 @@
         },
         "files": [
             "config/packages/doctrine.yaml",
-            "src/Entity/.gitignore",
-            "src/Repository/.gitignore"
+            "src/Domain/Entity/.gitignore",
+            "src/Infrastructure/Database/Repository/.gitignore"
         ]
     },
     "doctrine/doctrine-migrations-bundle": {
