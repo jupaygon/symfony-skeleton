@@ -19,6 +19,11 @@ The structure of directories is ready for a **hexagonal architecture**, instead 
 
 To create crontrollers and entities using the make command, include the path of new file instead of use only the clase's name, in order to create it in the custom folder.
 
+```
+php bin/console make:entity '\App\Domain\Entity\Demo'
+php bin/console make:controller '\App\Infrastructure\Http\Controller\Demo'
+```
+
 🚨 When you create a new entity, the corresponding repository is created in the default directory of Symfony (instead of the Infrastructure/Database/Repository directory). You have to move the the repository manually to the Infrastructure/Database/Repository directory.
 
 ### 📋 Pre requirements
