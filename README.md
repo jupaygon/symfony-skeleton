@@ -1,4 +1,4 @@
-# 🩻 Symfony 7.0 skeleton
+# 🩻 Symfony 7.1 skeleton
 
 Basic installation of Symfony 7.1
 
