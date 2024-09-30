@@ -51,7 +51,7 @@ cd ..
 rm -rf symfony-skeleton.git
 ```
 
-- Now you new repository "myproyect" is a exact copy of "jupaygon/symfony-skeleton". You can download it executing the following command in your projects' folder:
+- Now your new repository "myproyect" is a exact copy of "jupaygon/symfony-skeleton". You can download it executing the following command in your projects' folder:
 
 ```
 git clone git@github.com:your_github_username/myproject.git
