@@ -1,6 +1,6 @@
 # 🩻 Symfony 7.0 skeleton
 
-Basic installation of Symfony 7.0 (with PHP 8.3)
+Basic installation of Symfony 7.1
 
 ### 🎯 Hexagonal architecture 
 
@@ -17,18 +17,18 @@ The structure of directories is ready for a **hexagonal architecture**, instead 
         - Controller
 ```
 
-To create crontrollers and entities using the make command, include the path of new file instead of use only the clase's name, in order to create it in the custom folder.
+To create controllers and entities using the make command, include the path of new file instead of use only the class's name, in order to create it in the custom folder.
 
 ```
 php bin/console make:entity '\App\Domain\Entity\Demo'
 php bin/console make:controller '\App\Infrastructure\Http\Controller\Demo'
 ```
 
-🚨 When you create a new entity, the corresponding repository is created in the default directory of Symfony (instead of the Infrastructure/Database/Repository directory). You have to move the the repository manually to the Infrastructure/Database/Repository directory.
+🚨 When you create a new entity, the corresponding repository is created in the default directory of Symfony (instead of the Infrastructure/Database/Repository directory). You have to move the repository manually to the Infrastructure/Database/Repository directory.
 
 ### 📋 Pre requirements
 
-- 🐘 PHP 8.2
+- 🐘 PHP 8.2 (or higher)
 - 📦 Composer
 - 🐬 MySQL/MariaDB
 
@@ -57,11 +57,11 @@ rm -rf symfony-skeleton.git
 git clone git@github.com:your_github_username/myproject.git
 ```
 
-### 🐳 In the docker **container** 
+Add a volume for your project in the docker-compose.yml file:
 
-Install dependencies in the project folder:
 ```
-$ composer install
+volumes:
+  - ./yourdomain:/var/www/html/yourdomain
 ```
 
 Make your .env.local file:
@@ -72,6 +72,13 @@ $ touch .env.local
 Put your database connection url in your .env.local file:
 ```
 DATABASE_URL="mysql://root:password@server_mariadb:3306/your_db_name?serverVersion=mariadb-10.10.2&charset=utf8mb4"
+```
+
+### 🐳 In the docker **container** 
+
+Install dependencies in the project folder:
+```
+$ composer install
 ```
 
 Create your database:
@@ -110,13 +117,6 @@ server {
     error_log  /var/log/nginx/error_yourdomain.log;
     access_log /var/log/nginx/access_yourdomain.log;
 }
-```
-
-Add a volume for your project in the docker-compose.yml file:
-
-```
-volumes:
-  - ./yourdomain:/var/www/html/yourdomain
 ```
 
 Stop the container:
