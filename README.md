@@ -74,19 +74,6 @@ Put your database connection url in your .env.local file:
 DATABASE_URL="mysql://root:password@server_mariadb:3306/your_db_name?serverVersion=mariadb-10.10.2&charset=utf8mb4"
 ```
 
-### 🐳 In the docker **container** 
-
-Install dependencies in the project folder:
-```
-$ composer install
-```
-
-Create your database:
-```
-$ php bin/console doctrine:database:create
-$ php bin/console doctrine:schema:create
-```
-
 Add your domain in your hosts file:
 ```
 127.0.0.1 yourdomain.local
@@ -129,6 +116,19 @@ Start the container:
 
 ```
 $ docker-compose up -d
+```
+
+### 🐳 In the docker **container**
+
+Install dependencies in the project folder:
+```
+$ composer install
+```
+
+Create your database:
+```
+$ php bin/console doctrine:database:create
+$ php bin/console doctrine:schema:create
 ```
 
 ### 🍾 Voilà! 🛫 🎉
