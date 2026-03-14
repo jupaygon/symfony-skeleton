@@ -44,7 +44,8 @@ src/
 │   ├── Command/              # Symfony console commands
 │   ├── EventSubscriber/      # Event listeners
 │   ├── Http/
-│   │   └── Controller/       # HTTP controllers
+│   │   ├── Api/              # API controllers (REST, webhooks)
+│   │   └── Controller/       # Web controllers
 │   ├── Persistence/
 │   │   └── Doctrine/         # Repository implementations
 │   ├── Security/             # Authentication, authorization
