@@ -1,140 +1,96 @@
-# 🩻 Symfony 7.1 skeleton
+# Symfony Skeleton — Hexagonal Architecture
 
-Basic installation of Symfony 7.1
+Symfony 8.0 starter template with **hexagonal architecture** (Domain/Application/Infrastructure). Ready-to-use base for clean PHP projects.
 
-### 🎯 Hexagonal architecture 
+**From zero to a clean, well-structured Symfony project in seconds.**
 
-The structure of directories is ready for a **hexagonal architecture**, instead the default one of Symfony.
+## Requirements
 
-```
-- Application
-- Domain
-    - Entity
-- Infrastructure
-    - Database
-        - Repository
-    - Http
-        - Controller
-```
+- PHP >= 8.4
+- Composer
 
-To create controllers and entities using the make command, include the path of new file instead of use only the class's name, in order to create it in the custom folder.
+## Quick Start
 
-```
-php bin/console make:entity '\App\Domain\Entity\Demo'
-php bin/console make:controller '\App\Infrastructure\Http\Controller\Demo'
+```bash
+git clone https://github.com/jupaygon/symfony-skeleton.git my-project
+cd my-project
+rm -rf .git && git init
+composer install
 ```
 
-🚨 When you create a new entity, the corresponding repository is created in the default directory of Symfony (instead of the Infrastructure/Database/Repository directory). You have to move the repository manually to the Infrastructure/Database/Repository directory.
-
-### 📋 Pre requirements
-
-- 🐘 PHP 8.2 (or higher)
-- 📦 Composer
-- 🐬 MySQL/MariaDB
-
-### 💻 Clone the repository in your **projects' folder**:
+Create your `.env.local` with your database connection:
 
 ```
-git clone git@github.com:jupaygon/symfony-skeleton.git myproject
+DATABASE_URL="mysql://root:password@127.0.0.1:3306/my_project?serverVersion=8.0&charset=utf8mb4"
 ```
 
-If you want to make your own repository starting from this one, follow the next steps:
+Create the database:
 
-- Make your new repository in GitHub.
-- Clone original one to your new repo with the following commands (change "myproject" by the name of your new repository):
-
-```
-git clone --bare git@github.com:jupaygon/symfony-skeleton.git
-cd symfony-skeleton.git
-git push --mirror git@github.com:your_github_username/myproject.git
-cd ..
-rm -rf symfony-skeleton.git
+```bash
+php bin/console doctrine:database:create
+php bin/console doctrine:schema:create
 ```
 
-- Now your new repository "myproyect" is a exact copy of "jupaygon/symfony-skeleton". You can download it executing the following command in your projects' folder:
+## Architecture
 
 ```
-git clone git@github.com:your_github_username/myproject.git
+src/
+├── Application/
+│   └── Service/              # Use cases, orchestration
+├── Domain/
+│   ├── Model/                # Entities, value objects
+│   └── Port/                 # Repository interfaces (contracts)
+├── Infrastructure/
+│   ├── Command/              # Symfony console commands
+│   ├── EventSubscriber/      # Event listeners
+│   ├── Http/
+│   │   ├── Api/              # API controllers (REST, webhooks)
+│   │   └── Controller/       # Web controllers
+│   ├── Persistence/
+│   │   └── Doctrine/         # Repository implementations
+│   ├── Security/             # Authentication, authorization
+│   └── Service/              # Infrastructure services
+└── Kernel.php
 ```
 
-Add a volume for your project in the docker-compose.yml file:
+### Layer rules
+
+- **Domain** has no dependencies on Infrastructure or Application. Pure business logic.
+- **Application** orchestrates domain objects. Depends on Domain only (via Port interfaces).
+- **Infrastructure** implements the Port interfaces and handles external concerns (HTTP, database, security).
+
+### Example flow
+
+The skeleton includes a `Demo` entity demonstrating the full pattern:
 
 ```
-volumes:
-  - ./yourdomain:/var/www/html/yourdomain
+Controller → DemoService → DemoRepositoryInterface → DemoRepository (Doctrine)
+   (Infra)      (App)            (Domain/Port)            (Infra/Persistence)
 ```
 
-Make your .env.local file:
-```
-$ touch .env.local
+## Creating new entities
+
+Use the `make` command with the full namespace path:
+
+```bash
+php bin/console make:entity '\App\Domain\Model\MyEntity'
 ```
 
-Put your database connection url in your .env.local file:
-```
-DATABASE_URL="mysql://root:password@server_mariadb:3306/your_db_name?serverVersion=mariadb-10.10.2&charset=utf8mb4"
-```
+> The repository will be created in the default Symfony directory. Move it manually to `Infrastructure/Persistence/Doctrine/` and create the corresponding interface in `Domain/Port/`.
 
-Add your domain in your hosts file:
-```
-127.0.0.1 yourdomain.local
+## Tests
+
+```bash
+./vendor/bin/phpunit
 ```
 
-Add your domain in a nginx configuration file of your docker:
-```
-server {
-    listen 80;
-    server_name yourdomain.local;
+## Stack
 
-    root /var/www/html/yourdomain/public;
+- **Symfony 8.0** — Latest stable
+- **PHP 8.4** — Required minimum
+- **Doctrine ORM 3** — Database abstraction
+- **PHPUnit 11** — Testing
 
-    index index.php index.html;
+## License
 
-    location / {
-        try_files $uri $uri/ /index.php?$query_string;
-    }
-
-    location ~ \.php$ {
-        include fastcgi_params;
-        fastcgi_pass php:9000;
-        fastcgi_index index.php;
-        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-        fastcgi_param PATH_INFO $fastcgi_path_info;
-    }
-
-    error_log  /var/log/nginx/error_yourdomain.log;
-    access_log /var/log/nginx/access_yourdomain.log;
-}
-```
-
-Stop the container:
-
-```
-$ docker-compose down
-```
-
-Start the container:
-
-```
-$ docker-compose up -d
-```
-
-### 🐳 In the docker **container**
-
-Install dependencies in the project folder:
-```
-$ composer install
-```
-
-Create your database:
-```
-$ php bin/console doctrine:database:create
-$ php bin/console doctrine:schema:create
-```
-
-### 🍾 Voilà! 🛫 🎉
-Put the url of your project in your browser, taking into account the port you have configured in your docker-compose.yml file.
-
-You will see the welcome page of Symfony, **congratulations**! 🎉 🎊
-```
-http://yourdomain.local:81/
-```
+MIT
