@@ -8,7 +8,7 @@ use App\Domain\Model\Demo;
 
 interface DemoRepositoryInterface
 {
-    public function find(int $id): ?Demo;
+    public function findById(int $id): ?Demo;
 
     /** @return Demo[] */
     public function findAll(): array;

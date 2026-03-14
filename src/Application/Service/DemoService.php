@@ -16,7 +16,7 @@ class DemoService
 
     public function find(int $id): ?Demo
     {
-        return $this->demoRepository->find($id);
+        return $this->demoRepository->findById($id);
     }
 
     /** @return Demo[] */

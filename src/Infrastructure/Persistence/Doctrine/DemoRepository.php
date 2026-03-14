@@ -19,6 +19,11 @@ class DemoRepository extends ServiceEntityRepository implements DemoRepositoryIn
         parent::__construct($registry, Demo::class);
     }
 
+    public function findById(int $id): ?Demo
+    {
+        return $this->find($id);
+    }
+
     public function save(Demo $demo): void
     {
         $this->getEntityManager()->persist($demo);
