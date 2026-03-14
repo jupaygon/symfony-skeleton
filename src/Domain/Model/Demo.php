@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Domain\Entity;
+declare(strict_types=1);
 
-use App\Infrastructure\Database\Repository\DemoRepository;
+namespace App\Domain\Model;
+
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: DemoRepository::class)]
+#[ORM\Entity]
 class Demo
 {
     #[ORM\Id]
@@ -14,22 +15,25 @@ class Demo
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $name = null;
+    private string $name;
+
+    public function __construct(string $name)
+    {
+        $this->name = $name;
+    }
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getName(): ?string
+    public function getName(): string
     {
         return $this->name;
     }
 
-    public function setName(string $name): static
+    public function setName(string $name): void
     {
         $this->name = $name;
-
-        return $this;
     }
 }
