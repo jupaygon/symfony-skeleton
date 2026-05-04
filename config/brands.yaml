@@ -1,0 +1,14 @@
+# yaml-language-server: $schema=../vendor/symfony/dependency-injection/Loader/schema/services.schema.json
+parameters:
+    brands_dev_allowed_suffixes: []
+    brands_default: 'default'
+    brands_map:
+        # hostname: brand_key
+        # Map production and local hostnames to their brand
+        # 'app.example.com': 'default'
+        # 'app.example.local': 'default'
+        # 'partner.example.com': 'partner'
+    brands_defs:
+        default:
+            name: 'Default'
+            dark: false

@@ -1,0 +1,8 @@
+# Stateless CSRF protection for logins/logouts.
+# Add form.csrf_protection here when wiring symfony/form.
+framework:
+    csrf_protection:
+        stateless_token_ids:
+            - submit
+            - authenticate
+            - logout
