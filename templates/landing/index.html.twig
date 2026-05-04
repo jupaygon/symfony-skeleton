@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="{{ app.request.locale|default('en') }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ 'landing.title'|trans }}</title>
+    <link rel="stylesheet" href="{{ asset('brands/' ~ brand ~ '/css/skin.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/public.css') }}">
+    <link rel="icon" type="image/svg+xml" href="{{ asset('brands/' ~ brand ~ '/images/favicon/favicon.svg') }}">
+</head>
+<body class="landing">
+    <div class="landing__container">
+        <header class="landing__header">
+            <h1 class="landing__title">{{ 'landing.title'|trans }}</h1>
+            <p class="landing__subtitle">{{ 'landing.subtitle'|trans }}</p>
+        </header>
+    </div>
+</body>
+</html>
