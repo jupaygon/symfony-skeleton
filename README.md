@@ -6,7 +6,7 @@ This repo is the auth-less counterpart of [`symfony-dashboard-skeleton`](https:/
 
 ## What you get
 
-- **Symfony 8.0** + PHP 8.4 + Doctrine ORM 3 + PHPUnit 11
+- **Symfony 8.1** + PHP 8.5 + Doctrine ORM 3 + PHPUnit 13
 - **Hexagonal architecture** — Domain / Application / Infrastructure with strict layer rules
 - **Security headers** via `nelmio/security-bundle` (CSP, X-Frame-Options, referrer policy, …)
 - **Stateless CSRF** ready (`framework.csrf_protection.stateless_token_ids`)
@@ -29,7 +29,7 @@ This repo is the auth-less counterpart of [`symfony-dashboard-skeleton`](https:/
 
 ## Requirements
 
-- PHP >= 8.4
+- PHP >= 8.5
 - Composer
 - A database (SQLite default; MySQL / Postgres via `.env.local`)
 
