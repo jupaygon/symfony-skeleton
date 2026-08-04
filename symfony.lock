@@ -5,7 +5,7 @@
             "repo": "github.com/symfony/recipes",
             "branch": "main",
             "version": "1.0",
-            "ref": "87424683adc81d7dc305eefec1fced883084aab9"
+            "ref": "fdd756167454623e21f1d769c5b814b243782a67"
         }
     },
     "doctrine/doctrine-bundle": {
@@ -35,18 +35,6 @@
             "migrations/.gitignore"
         ]
     },
-    "easycorp/easyadmin-bundle": {
-        "version": "5.0",
-        "recipe": {
-            "repo": "github.com/symfony/recipes",
-            "branch": "main",
-            "version": "4.14",
-            "ref": "13b3e524d1038a6861ad6c7fc64e31b644ba0c54"
-        },
-        "files": [
-            "config/routes/easyadmin.yaml"
-        ]
-    },
     "nelmio/security-bundle": {
         "version": "3.9",
         "recipe": {
@@ -59,28 +47,31 @@
             "config/packages/nelmio_security.yaml"
         ]
     },
+    "phpstan/phpstan": {
+        "version": "2.2.7"
+    },
     "phpunit/phpunit": {
-        "version": "11.5",
+        "version": "13.2",
         "recipe": {
             "repo": "github.com/symfony/recipes",
             "branch": "main",
             "version": "11.1",
-            "ref": "1117deb12541f35793eec9fff7494d7aa12283fc"
+            "ref": "ca0bc067abfb40a8de1b2561b96cbfc2b833c314"
         },
         "files": [
             ".env.test",
+            "bin/phpunit",
             "phpunit.dist.xml",
-            "tests/bootstrap.php",
-            "bin/phpunit"
+            "tests/bootstrap.php"
         ]
     },
     "symfony/asset-mapper": {
-        "version": "8.0",
+        "version": "8.1",
         "recipe": {
             "repo": "github.com/symfony/recipes",
             "branch": "main",
             "version": "6.4",
-            "ref": "5ad1308aa756d58f999ffbe1540d1189f5d7d14a"
+            "ref": "c01c47af2ec66a74ec046eccb919cfe27d3464ec"
         },
         "files": [
             "assets/app.js",
@@ -114,27 +105,16 @@
             ".env.dev"
         ]
     },
-    "symfony/form": {
-        "version": "8.0",
-        "recipe": {
-            "repo": "github.com/symfony/recipes",
-            "branch": "main",
-            "version": "7.2",
-            "ref": "7d86a6723f4a623f59e2bf966b6aad2fc461d36b"
-        },
-        "files": [
-            "config/packages/csrf.yaml"
-        ]
-    },
     "symfony/framework-bundle": {
-        "version": "8.0",
+        "version": "8.1",
         "recipe": {
             "repo": "github.com/symfony/recipes",
             "branch": "main",
-            "version": "7.4",
-            "ref": "09f6e081c763a206802674ce0cb34a022f0ffc6d"
+            "version": "8.1",
+            "ref": "312027aea160796a50bf2d185503afdb5d71f570"
         },
         "files": [
+            ".editorconfig",
             "config/packages/cache.yaml",
             "config/packages/framework.yaml",
             "config/preload.php",
@@ -142,8 +122,7 @@
             "config/services.yaml",
             "public/index.php",
             "src/Controller/.gitignore",
-            "src/Kernel.php",
-            ".editorconfig"
+            "src/Kernel.php"
         ]
     },
     "symfony/maker-bundle": {
@@ -239,32 +218,5 @@
             "version": "7.0",
             "ref": "0df5844274d871b37fc3816c57a768ffc60a43a5"
         }
-    },
-    "symfony/ux-twig-component": {
-        "version": "2.32",
-        "recipe": {
-            "repo": "github.com/symfony/recipes",
-            "branch": "main",
-            "version": "2.13",
-            "ref": "f367ae2a1faf01c503de2171f1ec22567febeead"
-        },
-        "files": [
-            "config/packages/twig_component.yaml"
-        ]
-    },
-    "symfony/validator": {
-        "version": "8.0",
-        "recipe": {
-            "repo": "github.com/symfony/recipes",
-            "branch": "main",
-            "version": "7.0",
-            "ref": "8c1c4e28d26a124b0bb273f537ca8ce443472bfd"
-        },
-        "files": [
-            "config/packages/validator.yaml"
-        ]
-    },
-    "twig/extra-bundle": {
-        "version": "v3.23.0"
     }
 }
