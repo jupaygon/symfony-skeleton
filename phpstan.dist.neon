@@ -6,10 +6,6 @@ parameters:
     symfony:
         containerXmlPath: var/cache/dev/App_KernelDevDebugContainer.xml
     ignoreErrors:
-        # Symfony reads getAllowedEnvs() through the kernel, never the app code
-        -
-            identifier: method.unused
-            path: src/Kernel.php
         # The watch command loops until the user stops it
         -
             identifier: while.alwaysTrue
